@@ -1,4 +1,4 @@
-return {
+return {{
   "nvim-flutter/flutter-tools.nvim",
   lazy = false,
   dependencies = {
@@ -6,4 +6,4 @@ return {
     "stevearc/dressing.nvim", -- optional for vim.ui.select
   },
   config = true,
-}
+}}

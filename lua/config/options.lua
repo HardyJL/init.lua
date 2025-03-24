@@ -1,7 +1,11 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 vim.opt.cursorline = false -- Highlight the current line for better visibility
 vim.opt.mouse = "a" -- Enable mouse support in all modes
 vim.opt.clipboard = "unnamedplus" -- Use system clipboard for copy-paste
 vim.opt.relativenumber = true
+vim.opt.nu = true
 
 vim.opt.ignorecase = true -- Case-insensitive search...
 vim.opt.smartcase = true -- ...unless uppercase letters are used
@@ -31,3 +35,6 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.colorcolumn = "80"
 vim.opt.splitbelow = false
+
+vim.o.updatetime = 500
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]

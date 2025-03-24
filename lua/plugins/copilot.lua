@@ -1,7 +1,6 @@
 return {
   {
     "zbirenbaum/copilot.lua",
-    enabled = false,
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
@@ -14,7 +13,7 @@ return {
           keymap = {
             accept = false,
             accept_word = false,
-            accept_line = "<Tab>",
+            accept_line = "<S-Tab>",
             next = false,
             prev = false,
             dismiss = false,
