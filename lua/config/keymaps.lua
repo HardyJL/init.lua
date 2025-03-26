@@ -3,11 +3,12 @@ vim.keymap.set("i", "jj", "<Esc>", { desc = "Escape insert mode by typing 'jj'" 
 vim.keymap.set({ "i", "n" }, "<leader>;", "A;<Esc>",
     { desc = "Append a semicolon at the end of the line and return to normal mode" })
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select the entire file" })
+vim.keymap.set("n", "<leader>wq", "<CMD>q<CR>", { desc = "Close" })
 vim.keymap.set("x", "<leader>p", [["_dP]],
     { desc = "Delete selection without modifying system clipboard and paste it back" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down one page and recenter the cursor" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up one page and recenter the cursor" })
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open Ex mode or file explorer" })
+vim.keymap.set("n", "<leader>pv", vim.cmd.Lex, { desc = "Open Ex mode or file explorer" })
 
 vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
@@ -59,18 +60,10 @@ end)
 vim.keymap.set("n", "<leader>jl", function()
     harpoon:list():next()
 end)
-vim.keymap.set("n", "<leader>jkl", function()
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end)
--- require('neoscroll').setup({ mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>' } })
-vim.keymap.set("n", "<leader>pp", "<cmd>Telescope projects<CR>")
--- movement
 vim.keymap.set({ 'n', 'v' }, '<C-k>', '<cmd>Treewalker Up<cr>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<C-j>', '<cmd>Treewalker Down<cr>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<C-h>', '<cmd>Treewalker Left<cr>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<C-l>', '<cmd>Treewalker Right<cr>', { silent = true })
-
 vim.keymap.set({ 'n', 'v' }, '<F5>', '<cmd>FlutterRun<cr>')
 vim.keymap.set({ 'n', 'v' }, '<F6>', '<cmd>FlutterRestart<cr>')
 vim.keymap.set({ 'n', 'v' }, '<F11>', '<cmd>FlutterLogClear<cr>')
