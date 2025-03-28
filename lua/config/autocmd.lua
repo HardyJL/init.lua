@@ -60,7 +60,10 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 
-vim.lsp.enable({'bashls', 'lua_ls', 'pyright', 'dartls'})
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.fs,*.fsx,*.fsi",
+  command = [[set filetype=fsharp]]
+})
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)

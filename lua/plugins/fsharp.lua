@@ -1,3 +1,3 @@
 return {
-  { "adelarsq/neofsharp.vim" },
+    { "ionide/Ionide-vim" },
 }
