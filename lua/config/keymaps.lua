@@ -8,7 +8,6 @@ vim.keymap.set("x", "<leader>p", [["_dP]],
     { desc = "Delete selection without modifying system clipboard and paste it back" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down one page and recenter the cursor" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up one page and recenter the cursor" })
-vim.keymap.set("n", "<leader>pv", vim.cmd.Lex, { desc = "Open Ex mode or file explorer" })
 
 vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
