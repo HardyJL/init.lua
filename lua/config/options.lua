@@ -1,11 +1,12 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
-vim.opt.cursorline = true        -- Highlight the current line for better visibility
-vim.opt.mouse = "a"               -- Enable mouse support in all modes
 vim.opt.clipboard = "unnamedplus" -- Use system clipboard for copy-paste
 vim.opt.relativenumber = true
 vim.opt.nu = true
+
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.smartindent = true
 
 vim.opt.ignorecase = true -- Case-insensitive search...
 vim.opt.smartcase = true  -- ...unless uppercase letters are used
@@ -15,15 +16,8 @@ vim.opt.hlsearch = false  -- Disable search highlight after search is done
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", extends = "→", precedes = "←" }
 
-vim.opt.updatetime = 250  -- Reduce time before swap file update & CursorHold event
-vim.opt.timeoutlen = 500  -- Faster key sequence timeout (default is 1000ms)
-
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-
-vim.opt.smartindent = true
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 vim.o.scroll = 10
 vim.opt.wrap = false
 
@@ -34,3 +28,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
 vim.opt.splitbelow = false
 
+vim.g.netrw_browse_split = 0  -- Open files in the current window
+vim.g.netrw_liststyle = 3     -- Tree-style view
+vim.g.netrw_banner = 0        -- Hide the banner
+vim.g.netrw_winsize = 25      -- Set width to 25% of the window

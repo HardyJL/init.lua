@@ -8,7 +8,19 @@ return {
   },
 
   config = function()
-    require("telescope").setup({})
+    require("telescope").setup({
+			defaults = {
+				mappings = {
+					i = { ["<C-u>"] = false },
+				},
+			},
+			pickers = {
+				find_files = {
+					-- Use the current file's directory as the search root
+					cwd = vim.fn.expand("%:p:h"),
+				},
+			},
+		})
 
     local builtin = require("telescope.builtin")
     vim.keymap.set("n", "<leader>pf", builtin.find_files, {})

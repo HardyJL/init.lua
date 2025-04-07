@@ -1,11 +1,11 @@
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join current line with next and return to cursor position" })
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Escape insert mode by typing 'jj'" })
 vim.keymap.set({ "i", "n" }, "<leader>;", "A;<Esc>",
-    { desc = "Append a semicolon at the end of the line and return to normal mode" })
+  { desc = "Append a semicolon at the end of the line and return to normal mode" })
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select the entire file" })
 vim.keymap.set("n", "<leader>wq", "<CMD>q<CR>", { desc = "Close" })
 vim.keymap.set("x", "<leader>p", [["_dP]],
-    { desc = "Delete selection without modifying system clipboard and paste it back" })
+  { desc = "Delete selection without modifying system clipboard and paste it back" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down one page and recenter the cursor" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up one page and recenter the cursor" })
 
@@ -16,8 +16,6 @@ vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buff
 vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete Buffer" })
 vim.keymap.set("n", "<leader>bl", "<cmd>Telescope buffers<cr>", { desc = "Look at buffer List" })
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "Format document" })
-vim.keymap.set("n", "<leader>/", ":belowright split | terminal<CR>:resize 5<CR>",
-    { desc = "Open terminal in split below with specific size" })
 -- Move Lines
 vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
 vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
@@ -25,45 +23,45 @@ vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
 vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
 vim.keymap.set("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
 vim.keymap.set("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
+vim.keymap.set("t", "J", "i<Up><Cr><C-\\><C-n>")
 
 local harpoon = require("harpoon")
-
--- REQUIRED
 harpoon:setup()
--- REQUIRED
 
 vim.keymap.set("n", "<leader>ja", function()
-    harpoon:list():add()
+  harpoon:list():add()
 end)
 vim.keymap.set("n", "<leader>jj", function()
-    harpoon.ui:toggle_quick_menu(harpoon:list())
+  harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
 
 vim.keymap.set("n", "<leader>j1", function()
-    harpoon:list():select(1)
+  harpoon:list():select(1)
 end)
 vim.keymap.set("n", "<leader>j2", function()
-    harpoon:list():select(2)
+  harpoon:list():select(2)
 end)
 vim.keymap.set("n", "<leader>j3", function()
-    harpoon:list():select(3)
+  harpoon:list():select(3)
 end)
 vim.keymap.set("n", "<leader>j4", function()
-    harpoon:list():select(4)
+  harpoon:list():select(4)
 end)
 
 -- Toggle previous & next buffers stored within Harpoon list
 vim.keymap.set("n", "<leader>jh", function()
-    harpoon:list():prev()
+  harpoon:list():prev()
 end)
 vim.keymap.set("n", "<leader>jl", function()
-    harpoon:list():next()
+  harpoon:list():next()
 end)
-vim.keymap.set({ 'n', 'v' }, '<C-k>', '<cmd>Treewalker Up<cr>', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<C-j>', '<cmd>Treewalker Down<cr>', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<C-h>', '<cmd>Treewalker Left<cr>', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<C-l>', '<cmd>Treewalker Right<cr>', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<F5>', '<cmd>FlutterRun<cr>')
-vim.keymap.set({ 'n', 'v' }, '<F6>', '<cmd>FlutterRestart<cr>')
-vim.keymap.set({ 'n', 'v' }, '<F11>', '<cmd>FlutterLogClear<cr>')
-vim.keymap.set({ 'n', 'v' }, '<F12>', '<cmd>FlutterLogToggle<cr>')
+-- vim.keymap.set({ 'n', 'v' }, '<F5>', '<cmd>FlutterRun<cr>')
+-- vim.keymap.set({ 'n', 'v' }, '<F6>', '<cmd>FlutterRestart<cr>')
+-- vim.keymap.set({ 'n', 'v' }, '<F11>', '<cmd>FlutterLogClear<cr>')
+-- vim.keymap.set({ 'n', 'v' }, '<F12>', '<cmd>FlutterLogToggle<cr>')
+
+
+-- New terminal keymap
+local terminal = require("config.terminal")
+vim.keymap.set("n", "<leader>t", terminal.toggle_persistent_terminal, { desc = "Toggle persistent terminal" })

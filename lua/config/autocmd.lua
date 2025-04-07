@@ -59,19 +59,25 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+local virtual_lines_enabled = false
 
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "*.fs,*.fsx,*.fsi",
-  command = [[set filetype=fsharp]]
-})
+vim.keymap.set('n', '<leader>ul', function()
+    virtual_lines_enabled = not virtual_lines_enabled
+    vim.diagnostic.config({ virtual_lines =  virtual_lines_enabled })
+end, { desc = "Toggle diagnostic virtual lines" })
 
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-    end
-  end,
+vim.diagnostic.config({
+  virtual_text = true,
+  virtual_lines = false, -- { current_line = true },
+  underline = false,
+  update_in_insert = false
 })
-vim.diagnostic.config({ virtual_text = true })
+-- Custom function to open netrw in the current file's directory
+local function open_netrw_in_current_dir()
+  local current_file_dir = vim.fn.expand("%:p:h")
+  vim.cmd("Explore " .. current_file_dir)
+end
+
+-- Keymap to trigger netrw
+vim.keymap.set("n", "<leader>pv", open_netrw_in_current_dir, { desc = "Open Netrw in current file dir" })
 
