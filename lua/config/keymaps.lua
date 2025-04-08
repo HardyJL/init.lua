@@ -2,12 +2,19 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = "Join current line with next and retu
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Escape insert mode by typing 'jj'" })
 vim.keymap.set({ "i", "n" }, "<leader>;", "A;<Esc>",
   { desc = "Append a semicolon at the end of the line and return to normal mode" })
+
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select the entire file" })
 vim.keymap.set("n", "<leader>wq", "<CMD>q<CR>", { desc = "Close" })
 vim.keymap.set("x", "<leader>p", [["_dP]],
   { desc = "Delete selection without modifying system clipboard and paste it back" })
+
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down one page and recenter the cursor" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up one page and recenter the cursor" })
+
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>")
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>")
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
 
 vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })

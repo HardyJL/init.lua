@@ -68,16 +68,7 @@ end, { desc = "Toggle diagnostic virtual lines" })
 
 vim.diagnostic.config({
   virtual_text = true,
-  virtual_lines = false, -- { current_line = true },
-  underline = false,
-  update_in_insert = false
+  underline = true,
+  update_in_insert =  false,
 })
--- Custom function to open netrw in the current file's directory
-local function open_netrw_in_current_dir()
-  local current_file_dir = vim.fn.expand("%:p:h")
-  vim.cmd("Explore " .. current_file_dir)
-end
-
--- Keymap to trigger netrw
-vim.keymap.set("n", "<leader>pv", open_netrw_in_current_dir, { desc = "Open Netrw in current file dir" })
 

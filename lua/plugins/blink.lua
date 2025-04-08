@@ -1,11 +1,7 @@
 return {
   'saghen/blink.cmp',
-  -- optional: provides snippets for the snippet source
   dependencies = { 'rafamadriz/friendly-snippets' },
-
   version = '1.*',
-
-  ---@type blink.cmp.Config
   opts = {
     -- All presets have the following mappings:
     -- C-space: Open menu or open docs if already open
@@ -14,8 +10,7 @@ return {
     -- C-k: Toggle signature help (if signature.enabled = true)
     --
     -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = 'super-tab' },
-
+    keymap = { preset = 'default' },
     appearance = {
       nerd_font_variant = 'mono'
     },

@@ -16,7 +16,7 @@ vim.opt.hlsearch = false  -- Disable search highlight after search is done
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", extends = "→", precedes = "←" }
 
-vim.opt.updatetime = 250
+vim.opt.updatetime = 350
 vim.opt.timeoutlen = 300
 vim.o.scroll = 10
 vim.opt.wrap = false
@@ -28,7 +28,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
 vim.opt.splitbelow = false
 
-vim.g.netrw_browse_split = 0  -- Open files in the current window
-vim.g.netrw_liststyle = 3     -- Tree-style view
-vim.g.netrw_banner = 0        -- Hide the banner
-vim.g.netrw_winsize = 25      -- Set width to 25% of the window
+vim.g.netrw_browse_split = 0 -- Open files in the current window
+vim.g.netrw_liststyle = 3    -- Tree-style view
+vim.g.netrw_banner = 0       -- Hide the banner
+vim.g.netrw_winsize = 25     -- Set width to 25% of the window
