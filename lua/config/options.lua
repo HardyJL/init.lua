@@ -25,7 +25,7 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "100"
 vim.opt.splitbelow = false
 
 vim.g.netrw_browse_split = 0 -- Open files in the current window
