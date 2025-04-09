@@ -26,9 +26,9 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 
 vim.opt.colorcolumn = "100"
-vim.opt.splitbelow = false
+vim.opt.cmdheight = 0
 
-vim.g.netrw_browse_split = 0 -- Open files in the current window
 vim.g.netrw_liststyle = 3    -- Tree-style view
 vim.g.netrw_banner = 0       -- Hide the banner
 vim.g.netrw_winsize = 25     -- Set width to 25% of the window
+

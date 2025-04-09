@@ -20,5 +20,6 @@ return {
     end
   },
   { "erikbackman/brightburn.vim" },
-  { "rose-pine/neovim" }
+  { "rose-pine/neovim" },
+  { "catppuccin/nvim",           name = "catppuccin", priority = 1000 }
 }
