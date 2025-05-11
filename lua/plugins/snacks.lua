@@ -5,6 +5,7 @@ return {
   opts = {
     bigfile = { enabled = true },
     dashboard = {
+      enabled = false,
       preset = {
         header = [[
 ██╗  ██╗ █████╗ ███╗   ██╗███████╗    ██████╗ ██╗████████╗████████╗███████╗██████╗
@@ -55,15 +56,14 @@ return {
         end
       },
     },
-    explorer = { enabled = true },
+    explorer = { enabled = false },
     indent = { enabled = true },
     input = { enabled = true },
     picker = {
-      enabled = true,
+      enabled = false,
       sources = {
         explorer = {
           auto_close = true,
-          hidden = true,
         }
       },
     },

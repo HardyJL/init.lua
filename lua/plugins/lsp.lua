@@ -17,7 +17,7 @@ return {
         servers = {
             lua_ls = {},
             pyright = {},
-            fsautocomplete = {},
+            -- fsautocomplete = {},
         }
     },
     config = function(_, opts)

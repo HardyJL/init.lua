@@ -4,7 +4,8 @@ vim.keymap.set({ "i", "n" }, "<leader>;", "A;<Esc>",
   { desc = "Append a semicolon at the end of the line and return to normal mode" })
 
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select the entire file" })
-vim.keymap.set("n", "<leader>wq", "<CMD>q<CR>", { desc = "Close" })
+vim.keymap.set("n", "<leader>q", "<CMD>q<CR>")
+vim.keymap.set("n", "<leader>w", "<CMD>w<CR>")
 vim.keymap.set("x", "<leader>p", [["_dP]],
   { desc = "Delete selection without modifying system clipboard and paste it back" })
 
@@ -15,6 +16,11 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>")
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>")
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
+
+vim.keymap.set("n", "gl", "$")
+vim.keymap.set("n", "gh", "^")
+vim.keymap.set("n", "gf", "0")
+vim.keymap.set("n", "mm", "%")
 
 vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
@@ -63,11 +69,6 @@ end)
 vim.keymap.set("n", "<leader>jl", function()
   harpoon:list():next()
 end)
--- vim.keymap.set({ 'n', 'v' }, '<F5>', '<cmd>FlutterRun<cr>')
--- vim.keymap.set({ 'n', 'v' }, '<F6>', '<cmd>FlutterRestart<cr>')
--- vim.keymap.set({ 'n', 'v' }, '<F11>', '<cmd>FlutterLogClear<cr>')
--- vim.keymap.set({ 'n', 'v' }, '<F12>', '<cmd>FlutterLogToggle<cr>')
-
 
 -- New terminal keymap
 local terminal = require("config.terminal")
