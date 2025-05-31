@@ -14,12 +14,9 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 
 vim.opt.ignorecase = true -- Case-insensitive search...
-vim.opt.smartcase = true  -- ...unless uppercase letters are used
-vim.opt.incsearch = true  -- Show search matches as you type
-vim.opt.hlsearch = false  -- Disable search highlight after search is done
-
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", extends = "→", precedes = "←" }
+vim.opt.smartcase = true -- ...unless uppercase letters are used
+vim.opt.incsearch = true -- Show search matches as you type
+vim.opt.hlsearch = false -- Disable search highlight after search is done
 
 vim.opt.updatetime = 50
 vim.opt.timeoutlen = 250
@@ -30,7 +27,6 @@ vim.opt.scrolloff = 999
 vim.opt.signcolumn = "yes"
 
 vim.opt.colorcolumn = "100"
-vim.g.netrw_liststyle = 3    -- Tree-style view
-vim.g.netrw_banner = 0       -- Hide the banner
-vim.g.netrw_winsize = 25     -- Set width to 25% of the window
-
+vim.g.netrw_liststyle = 3 -- Tree-style view
+vim.g.netrw_banner = 0 -- Hide the banner
+vim.g.netrw_winsize = 25 -- Set width to 25% of the window
