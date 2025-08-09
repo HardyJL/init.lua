@@ -1,0 +1,12 @@
+vim.keymap.set('n', '<leader>w', ':write<CR>')
+vim.keymap.set('n', '<leader>q', ':quit<CR>')
+vim.keymap.set('n', '<leader>e', ":Oil<CR>")
+vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+vim.keymap.set('n', '<leader>fc', vim.cmd.UndotreeToggle)
+vim.keymap.set('n', '<leader>ff', ":Pick files<CR>")
+vim.keymap.set('n', '<C-p>', ":Pick files tool='git'<CR>")
+vim.keymap.set('n', '<leader>fh', ":Pick help<CR>")
+vim.keymap.set('n', '<leader>ff', ":Pick files<CR>")
+vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+
