@@ -4,6 +4,7 @@ vim.opt.clipboard = "unnamedplus" -- Use system clipboard for copy-paste
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.conceallevel = 1
+vim.opt.winborder = "rounded"
 
 vim.opt.wrap = false
 vim.opt.tabstop = 2
