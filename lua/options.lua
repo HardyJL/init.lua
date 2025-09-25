@@ -13,3 +13,4 @@ vim.opt.termguicolors = true
 vim.opt.undofile = true
 vim.opt.incsearch = true
 vim.opt.signcolumn = "yes"
+vim.opt.clipboard = "unnamedplus"
