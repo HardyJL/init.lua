@@ -2,5 +2,10 @@ vim.g.mapleader = " "
 
 require("options")
 require("autocmds")
-require("pack")
+if vim.g.vscode then
+		require("code")
+else
+		require("pack")
+    -- ordinary Neovim
+end
 require("keymaps")

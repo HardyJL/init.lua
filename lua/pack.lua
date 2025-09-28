@@ -23,8 +23,7 @@ require "blink.cmp".setup({ fuzzy = { implementation = "rust" } })
 require "mini.pick".setup()
 require"flutter-tools".setup()
 
--- LSP / Treesitter
-vim.lsp.enable({ "lua_ls"  })
+vim.lsp.enable({ "lua_ls" })
 require('nvim-treesitter.configs').setup({
 	auto_install = true,
 	highlight = {
@@ -32,7 +31,14 @@ require('nvim-treesitter.configs').setup({
 	},
 })
 
--- Colors
+local opts = { noremap = true, silent = true }
+vim.keymap.set('n', '<leader>e', ":Oil<CR>", opts)
+vim.keymap.set('n', '<leader>ff', ":Pick files<CR>", opts)
+vim.keymap.set('n', '<leader>fg', ":Pick grep_live<CR>", opts)
+vim.keymap.set('n', '<C-p>', ":Pick files tool='git'<CR>", opts)
+vim.keymap.set('n', '<leader>fh', ":Pick help<CR>", opts)
+vim.keymap.set('n', '<leader>ff', ":Pick files<CR>", opts)
+
 require "hybrid".setup({ transparent = true })
 vim.cmd("colorscheme hybrid")
 vim.cmd(":hi statusline guibg=NONE")
