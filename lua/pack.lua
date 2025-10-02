@@ -15,8 +15,8 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/mrcjkb/rustaceanvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
-	{ src = "https://github.com/zbirenbaum/copilot.lua" },
-	{ src = "https://github.com/CopilotC-Nvim/CopilotChat.nvim" },
+	{ src = "https://github.com/folke/sidekick.nvim" },
+	{ src = "https://github.com/karb94/neoscroll.nvim" },
 })
 
 require("mason").setup()
@@ -24,7 +24,6 @@ require("oil").setup()
 require("blink.cmp").setup({ fuzzy = { implementation = "rust" } })
 require("mini.pick").setup()
 require("flutter-tools").setup()
-require("copilot").setup()
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
@@ -33,15 +32,19 @@ require("conform").setup({
 			"ruff_format",
 			"ruff_organize_imports",
 		},
+		rust = { "rustfmt", lsp_format = "fallback" },
 	},
 })
+require("neoscroll").setup({ mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "zz", "<C-y>", "<C-e>" } })
 
-vim.lsp.enable({ "lua_ls", "basedpyright" })
+vim.lsp.enable({ "lua_ls", "basedpyright", "copilot" })
 require("nvim-treesitter.configs").setup({
 	auto_install = true,
 	highlight = {
 		enable = true,
 	},
+	ensure_installed = { "rust", "lua" },
+	incremental_selection = { enable = true },
 })
 
 local opts = { noremap = true, silent = true }

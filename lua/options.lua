@@ -14,3 +14,4 @@ vim.opt.undofile = true
 vim.opt.incsearch = true
 vim.opt.signcolumn = "yes"
 vim.opt.clipboard = "unnamedplus"
+vim.lsp.inline_completion.enable()
