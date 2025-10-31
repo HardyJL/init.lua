@@ -7,13 +7,6 @@ vim.keymap.set("n", "<leader>fc", vim.cmd.UndotreeToggle, opts)
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" }, opts)
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" }, opts)
 
-vim.keymap.set("n", "<leader>e", ":Oil<CR>", opts)
-vim.keymap.set("n", "<leader>ff", ":Pick files<CR>", opts)
-vim.keymap.set("n", "<leader>fg", ":Pick grep_live<CR>", opts)
-vim.keymap.set("n", "<C-p>", ":Pick files tool='git'<CR>", opts)
-vim.keymap.set("n", "<leader>fh", ":Pick help<CR>", opts)
-vim.keymap.set("n", "<leader>ff", ":Pick files<CR>", opts)
-
 -- vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
 -- vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
 vim.keymap.set("n", "[d", function()

@@ -1,0 +1,25 @@
+{
+  "plugins": {
+    "auto-session": [],
+    "blink.cmp": {
+      "version": "'v1.7.0'"
+    },
+    "conform.nvim": [],
+    "flutter-tools.nvim": [],
+    "gemini-cli.nvim": [],
+    "hybrid.nvim": [],
+    "mason.nvim": [],
+    "nvim-dap": [],
+    "nvim-lspconfig": [],
+    "nvim-treesitter": [],
+    "nvim-web-devicons": [],
+    "oil.nvim": [],
+    "plenary.nvim": [],
+    "rustaceanvim": [],
+    "sidekick.nvim": [],
+    "snacks.nvim": [],
+    "supermaven-nvim": [],
+    "undotree": [],
+    "vim-wakatime": []
+  }
+}

@@ -8,7 +8,6 @@ vim.pack.add({
 		src = "https://github.com/Saghen/blink.cmp",
 		version = "v1.7.0",
 	},
-	{ src = "https://github.com/echasnovski/mini.pick" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/mbbill/undotree" },
 	{ src = "https://github.com/rmagatti/auto-session" },
@@ -19,29 +18,28 @@ vim.pack.add({
 	{ src = "https://github.com/mrcjkb/rustaceanvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/folke/sidekick.nvim" },
-	{ src = "https://github.com/karb94/neoscroll.nvim" },
-	{ src = "https://github.com/savq/melange-nvim" },
-	{ src = "https://github.com/giuxtaposition/blink-cmp-copilot" },
-	{ src = "https://github.com/zbirenbaum/copilot.lua" },
+	{ src = "https://github.com/marcinjahn/gemini-cli.nvim" },
+	{
+		src = "https://github.com/folke/snacks.nvim",
+	},
+	{ src = "https://github.com/supermaven-inc/supermaven-nvim" },
 })
 
+require("snacks").setup({
+	picker = { enabled = true },
+	bigfile = { enabled = true },
+	scroll = { enabled = true },
+	keys = {},
+})
 require("mason").setup()
 require("oil").setup()
 require("blink.cmp").setup({
 	fuzzy = { implementation = "rust" },
 	sources = {
-		default = { "lsp", "path", "snippets", "buffer", "copilot" },
-		providers = {
-			copilot = {
-				name = "copilot",
-				module = "blink-cmp-copilot",
-				score_offset = 100,
-				async = true,
-			},
-		},
+		default = { "lsp", "path", "snippets", "buffer" },
 	},
 })
-require("mini.pick").setup()
+require("supermaven-nvim").setup({})
 require("flutter-tools").setup()
 require("conform").setup({
 	formatters_by_ft = {
@@ -54,11 +52,7 @@ require("conform").setup({
 		rust = { "rustfmt", lsp_format = "fallback" },
 	},
 })
-require("copilot").setup({
-	suggestion = { enabled = false },
-	panel = { enabled = false },
-})
-require("neoscroll").setup({ mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "zz", "<C-y>", "<C-e>" } })
+-- require("neoscroll").setup({ mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "zz", "<C-y>", "<C-e>" } })
 
 vim.lsp.enable({ "lua_ls", "basedpyright" })
 require("nvim-treesitter.configs").setup({
@@ -81,23 +75,45 @@ vim.keymap.set("n", "grD", function()
 	vim.lsp.buf.declaration()
 end, opts)
 vim.keymap.set("n", "<leader>e", ":Oil<CR>", opts)
-vim.keymap.set("n", "<leader>ff", ":Pick files<CR>", opts)
-vim.keymap.set("n", "<leader>fg", ":Pick grep_live<CR>", opts)
-vim.keymap.set("n", "<C-p>", ":Pick files tool='git'<CR>", opts)
-vim.keymap.set("n", "<leader>fh", ":Pick help<CR>", opts)
-vim.keymap.set("n", "<leader>ff", ":Pick files<CR>", opts)
-vim.keymap.set("i", "<C-l>", function()
-	-- Assuming you are using 'zbirenbaum/copilot.lua'
-	local copilot = require("copilot.suggestion")
-	if copilot.is_visible() then
-		copilot.accept()
-	else
-		-- Fallback to default tab behavior if no copilot suggestion is visible
-		vim.api.nvim_feedkeys("<Tab>", "n", false)
-	end
-end, { expr = true, silent = true, desc = "Copilot Accept" })
+vim.keymap.set("n", "<leader>ff", function()
+	Snacks.picker.files()
+end, opts)
+vim.keymap.set("n", "<leader>fg", function()
+	Snacks.picker.grep()
+end, opts)
+vim.keymap.set("n", "<C-p>", function()
+	Snacks.picker.git_files()
+end, opts)
+vim.keymap.set("n", "<leader>fh", function()
+	Snacks.picker.help()
+end, opts)
+vim.keymap.set("n", "<leader>ff", function()
+	Snacks.picker.files()
+end, opts)
+vim.keymap.set("n", "<leader><space>", function()
+	Snacks.picker.smart()
+end, opts)
+
+vim.keymap.set("n", "<leader>sg", function()
+	Snacks.picker.grep()
+end)
+
+require("hybrid").setup({
+	theme = "hybrid",
+	transparent = true,
+	styles = {
+		sidebars = "transparent", -- Make sidebars (e.g., Telescope) transparent
+		floats = "transparent", -- Make floating windows transparent
+	},
+	italic = {
+		strings = false,
+		emphasis = true,
+		comments = false,
+		folds = false,
+	},
+})
 
 -- require("melange-nvim").setup({ transparent = true })
-vim.cmd("colorscheme melange")
+vim.cmd("colorscheme hybrid")
 
 vim.cmd(":hi statusline guibg=NONE")
