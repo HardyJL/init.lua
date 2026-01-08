@@ -23,6 +23,9 @@ vim.pack.add({
 		src = "https://github.com/folke/snacks.nvim",
 	},
 	{ src = "https://github.com/supermaven-inc/supermaven-nvim" },
+	{ src = "https://github.com/nvim-java/nvim-java" },
+	{ src = "https://github.com/MunifTanjim/nui.nvim" },
+	{ src = "https://github.com/JavaHello/spring-boot.nvim" },
 })
 
 require("snacks").setup({
@@ -31,6 +34,7 @@ require("snacks").setup({
 	scroll = { enabled = true },
 	keys = {},
 })
+require("java").setup()
 require("mason").setup()
 require("oil").setup()
 require("blink.cmp").setup({
@@ -42,6 +46,10 @@ require("blink.cmp").setup({
 require("supermaven-nvim").setup({})
 require("flutter-tools").setup()
 require("conform").setup({
+	format_on_save = {
+		timeout_ms = 1000,
+		lsp_format = "fallback", -- Forces use of the jdtls setup above
+	},
 	formatters_by_ft = {
 		lua = { "stylua" },
 		python = {
@@ -50,11 +58,12 @@ require("conform").setup({
 			"ruff_organize_imports",
 		},
 		rust = { "rustfmt", lsp_format = "fallback" },
+		java = {},
 	},
 })
 -- require("neoscroll").setup({ mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "zz", "<C-y>", "<C-e>" } })
 
-vim.lsp.enable({ "lua_ls", "basedpyright" })
+vim.lsp.enable({ "lua_ls", "basedpyright", "jdtls" })
 require("nvim-treesitter.configs").setup({
 	auto_install = true,
 	highlight = {

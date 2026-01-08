@@ -15,3 +15,4 @@ vim.opt.incsearch = true
 vim.opt.signcolumn = "yes"
 vim.opt.clipboard = "unnamedplus"
 vim.lsp.inline_completion.enable()
+vim.opt.laststatus = 0
