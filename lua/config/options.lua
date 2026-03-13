@@ -9,7 +9,6 @@ vim.lsp.inline_completion.enable()
 vim.o.confirm = true
 vim.o.ignorecase = true
 vim.o.inccommand = "split"
-vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorcolumn = false
 vim.opt.foldcolumn = "1"
 vim.opt.ignorecase = true
