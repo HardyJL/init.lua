@@ -1,6 +1,5 @@
 vim.pack.add({
 	{ src = "https://github.com/HoNamDuong/hybrid.nvim" },
-	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
@@ -17,22 +16,55 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/mrcjkb/rustaceanvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
-	{ src = "https://github.com/folke/sidekick.nvim" },
-	{ src = "https://github.com/marcinjahn/gemini-cli.nvim" },
 	{
 		src = "https://github.com/folke/snacks.nvim",
 	},
 	{ src = "https://github.com/supermaven-inc/supermaven-nvim" },
+	{ src = "https://github.com/chrisgrieser/nvim-origami" },
+	{ src = "https://github.com/luukvbaal/statuscol.nvim" },
 })
 
+local builtin = require("statuscol.builtin")
+require("statuscol").setup({
+	setopt = true,
+	ft_ignore = { "oil" }, -- filetypes to ignore
+	segments = {
+		{
+			text = { builtin.lnumfunc, " " },
+			condition = { true, builtin.not_empty },
+			click = "v:lua.ScLa",
+		},
+		{
+			text = { builtin.foldfunc, " " },
+			click = "v:lua.ScFa",
+		},
+	},
+})
+
+require("origami").setup()
 require("snacks").setup({
-	picker = { enabled = true },
+	picker = {
+		enabled = true,
+		sources = {
+			explorer = {
+				auto_close = true,
+				layout = {
+					preset = "sidebar",
+					preview = false,
+					layout = {
+						position = "right",
+						width = 30,
+					},
+				},
+			},
+		},
+	},
 	bigfile = { enabled = true },
 	scroll = { enabled = true },
+	explorer = { enabled = true },
 	keys = {},
 })
 require("mason").setup()
-require("oil").setup()
 require("blink.cmp").setup({
 	fuzzy = { implementation = "rust" },
 	sources = {
@@ -50,17 +82,29 @@ require("conform").setup({
 			"ruff_organize_imports",
 		},
 		rust = { "rustfmt", lsp_format = "fallback" },
+		xml = { "xmlformat" },
+		html = { "xmlformat" },
+		bash = { "shfmt" },
+		sh = { "shfmt" },
+	},
+	formatters = {
+		shfmt = {
+			prepend_args = { "-i", "4", "-ci", "-sr" },
+		},
+	},
+	format_on_save = {
+		lsp_fallback = true,
+		timeout_ms = 500,
 	},
 })
--- require("neoscroll").setup({ mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "zz", "<C-y>", "<C-e>" } })
 
-vim.lsp.enable({ "lua_ls", "basedpyright" })
-require("nvim-treesitter.configs").setup({
+vim.lsp.enable({ "lua_ls", "basedpyright", "bashls" })
+require("nvim-treesitter.config").setup({
 	auto_install = true,
 	highlight = {
 		enable = true,
 	},
-	ensure_installed = { "rust", "lua" },
+	ensure_installed = { "lua" },
 	incremental_selection = { enable = true },
 })
 
@@ -74,7 +118,12 @@ end, opts)
 vim.keymap.set("n", "grD", function()
 	vim.lsp.buf.declaration()
 end, opts)
-vim.keymap.set("n", "<leader>e", ":Oil<CR>", opts)
+vim.keymap.set("n", "<leader>e", function()
+	Snacks.explorer()
+end, opts)
+vim.keymap.set("n", "<leader>fb", function()
+	Snacks.picker.buffers()
+end, opts)
 vim.keymap.set("n", "<leader>ff", function()
 	Snacks.picker.files()
 end, opts)

@@ -2,7 +2,6 @@ local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<leader>w", ":write<CR>", opts)
 vim.keymap.set("n", "<leader>q", ":quit<CR>", opts)
-vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, opts)
 vim.keymap.set("n", "<leader>fc", vim.cmd.UndotreeToggle, opts)
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" }, opts)
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" }, opts)

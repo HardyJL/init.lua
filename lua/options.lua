@@ -15,3 +15,12 @@ vim.opt.incsearch = true
 vim.opt.signcolumn = "yes"
 vim.opt.clipboard = "unnamedplus"
 vim.lsp.inline_completion.enable()
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "NONE" })
+vim.opt.foldcolumn = "1"
+vim.opt.fillchars = {
+	foldopen = "",
+	foldclose = "",
+	foldsep = " ",
+}
