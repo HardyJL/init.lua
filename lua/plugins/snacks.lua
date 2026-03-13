@@ -22,7 +22,7 @@ return {
 		bigfile = { enabled = true },
 		scroll = { enabled = true },
 		explorer = { enabled = true },
-		dashboard = { enabled = true },
+		dashboard = { example = "compact_files" },
 		indent = { enabled = true },
 		input = { enabled = true },
 		notifier = { enabled = true },
